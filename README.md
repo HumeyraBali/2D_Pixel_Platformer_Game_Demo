@@ -9,7 +9,7 @@
 - [Credits](#credits)
 
 ## Overview
-This is a 2D pixel platformer game demo created to showcase basic platformer mechanics and features. The game is built with Unity and includes multiple levels, player abilities, and various game systems.
+This is a 2D pixel platformer game demo created to learn basic platformer mechanics and features. The game is built with Unity and includes multiple levels, player abilities, and various game systems.
 
 <p float="left">
   <img src="Source_Images/mainmenu.png" alt="Screenshot 1" width="45%" style="margin: 2.5%;" />
