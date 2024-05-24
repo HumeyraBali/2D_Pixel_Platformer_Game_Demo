@@ -6,6 +6,7 @@ public class PlayerRespawn : MonoBehaviour
     private Transform currentCheckpoint;
     private Health playerHealth;
     private UIManager uiManager;
+    public PlayerState savedState;
 
     private void Awake()
     {
@@ -25,7 +26,7 @@ public class PlayerRespawn : MonoBehaviour
         transform.position = currentCheckpoint.position; //Move player to checkpoint location
 
         //Move the camera to the checkpoint's room
-        Camera.main.GetComponent<CameraController>().MoveToNewRoom(currentCheckpoint.parent);
+        //Camera.main.GetComponent<CameraController>().MoveToNewRoom(currentCheckpoint.parent);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -35,6 +36,14 @@ public class PlayerRespawn : MonoBehaviour
             SoundManager.instance.PlaySound(checkpoint);
             collision.GetComponent<Collider2D>().enabled = false;
             collision.GetComponent<Animator>().SetTrigger("appear");
+        }
+
+        if (collision.CompareTag("Player"))
+        {
+            // Save the player state at the checkpoint
+            Player player = collision.GetComponent<Player>();
+            savedState = player.GetPlayerState();
+            Debug.Log("Checkpoint reached!");
         }
     }
 }

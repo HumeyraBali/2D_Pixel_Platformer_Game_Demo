@@ -15,9 +15,9 @@ public class UIManager : MonoBehaviour
     //Game over function
     public void GameOver()
     {
-        gameOverScreen.SetActive(true);
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.SetActive(false); // To prevent the player from being seen behind the scene
+        gameOverScreen.SetActive(true);
         SoundManager.instance.PlaySound(gameOverSound);
     }
 
@@ -25,7 +25,8 @@ public class UIManager : MonoBehaviour
     public void Restart()
     {
         Coin.totalCoins = 0;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("Level1");
     }
 
     //Activate game over screen

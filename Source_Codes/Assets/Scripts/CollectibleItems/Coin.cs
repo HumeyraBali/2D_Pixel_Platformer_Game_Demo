@@ -27,7 +27,14 @@ public class Coin : MonoBehaviour
 
     void UpdateCoinUI()
     {
-        // Update the UI Text to display the total number of coins
-        coinText.text = totalCoins.ToString();
+        Text coinText = FindObjectOfType<Text>();
+        if (coinText != null)
+        {
+            coinText.text = totalCoins.ToString();
+        }
+        else
+        {
+            Debug.LogError("Coin Text is not assigned!");
+        }
     }
 }

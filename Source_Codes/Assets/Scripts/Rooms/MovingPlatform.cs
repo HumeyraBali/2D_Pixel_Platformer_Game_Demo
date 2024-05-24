@@ -1,45 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
-//using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    public Transform platform;
-    public Transform startpoint;
-    public Transform endpoint;
-    public float speed = 1.5f;
-    int direction = 1;
+    [SerializeField] Transform posA, posB;
+    [SerializeField] int speed;
+    private Vector3 targetPos;
 
-    private void Update()
+    void Start()
     {
-        Vector2 target = currentMovementTarget();
-        platform.position = Vector2.Lerp(platform.position, target, speed*Time.deltaTime);
-        float distance = (target - (Vector2)platform.position).magnitude;
-        if (distance <= 0.1f)
-        {
-            direction *= -1;
-        }
+        targetPos = posB.position;
     }
 
-    Vector2 currentMovementTarget()
+    void Update()
     {
-        if (direction == 1)
-        {
-            return startpoint.position;
-        }
-        else
-        {
-            return endpoint.position;
-        }
+        if (Vector2.Distance(transform.position, posA.position) < 0.05f) targetPos = posB.position;
+        if (Vector2.Distance(transform.position, posB.position) < 0.05f) targetPos = posA.position;
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, speed*Time.deltaTime);
     }
 
-    private void OnDrawGizmos() 
+   private void OnCollisionEnter2D(Collision2D collision) 
+   {
+     
+        collision.transform.SetParent(transform);
+
+    }
+
+    private void OnCollisionExit2D(Collision2D collision) 
+   {
+     
+        collision.transform.SetParent(null);;
+
+    }
+    private void OnDrawGizmos()
     {
-        if(platform!=null && startpoint!=null && endpoint!=null)
-        {
-            Gizmos.DrawLine(platform.transform.position, startpoint.position);
-            Gizmos.DrawLine(platform.transform.position, endpoint.position);
-        }
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(posA.position, posB.position);
     }
 }

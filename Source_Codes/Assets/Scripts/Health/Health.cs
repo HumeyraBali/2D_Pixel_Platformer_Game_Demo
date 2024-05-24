@@ -23,12 +23,26 @@ public class Health : MonoBehaviour
     [SerializeField] private float İFramesDuration; 
     [SerializeField] private int numberOfFlashes;
     private SpriteRenderer spriteRend;
+    public Transform player;
+    public Transform cameraTransform;
+    private UIManager uiManager;
 
     private void Awake()
     {
         currentHealth = startingHealth;
         anim = GetComponent<Animator>();
         spriteRend = GetComponent<SpriteRenderer>();
+        uiManager = FindObjectOfType<UIManager>();
+    }
+
+    void Update()
+    {
+        // Check if the player has fallen below the camera view
+        if (player.position.y < cameraTransform.position.y - 10)
+        {
+            uiManager.GameOver();
+            return;
+        }
     }
     public void TakeDamage(float _damage)
     {
@@ -104,7 +118,7 @@ public class Health : MonoBehaviour
         Physics2D.IgnoreLayerCollision(7,8, false);
         //invulnerable = false;
     }
-        private void Deactivate()
+    private void Deactivate()
     {
         gameObject.SetActive(false);
     }

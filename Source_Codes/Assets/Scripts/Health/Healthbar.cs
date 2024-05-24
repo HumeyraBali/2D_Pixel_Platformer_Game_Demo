@@ -9,7 +9,15 @@ public class Healthbar : MonoBehaviour
 
     private void Start()
     {
-        totalhealthBar.fillAmount = playerHealth.currentHealth / 10;
+        playerHealth = FindObjectOfType<Health>();
+        if(playerHealth != null)
+        {
+            totalhealthBar.fillAmount = playerHealth.currentHealth / 10;
+        }
+        else
+        {
+            Debug.LogError("Player Health not found!");
+        }
     }
     private void Update()
     {

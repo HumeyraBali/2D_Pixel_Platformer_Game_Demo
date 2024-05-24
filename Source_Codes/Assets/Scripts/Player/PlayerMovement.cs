@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEditor.Callbacks;
+using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -25,11 +27,31 @@ public class PlayerMovement : MonoBehaviour
     [Header("Sounds")]
     [SerializeField] private AudioClip jumpsound;
 
+    [Header("Dash")]
+    [SerializeField] private TrailRenderer tr;
+    [SerializeField] private float dashingVelocity = 14f;
+    [SerializeField] private float dashingTime = 0.5f;
+    private Vector2 dashingDir;
+    private bool isDashing;
+    private bool canDash = true;
+    private bool canDashEnable = false;
     private Rigidbody2D body;
     private Animator anim;
     private BoxCollider2D boxCollider;
     private float wallJumpCooldown;
     private float horizontalInput;
+    private SpriteRenderer spriteRenderer;
+    public bool canWallJump = false;
+    private bool isCollidingWithWall = false;
+
+    /*
+    //Dash
+    private bool canDash = true;
+    private bool isDashing;
+    private float dashingPower = 48f;
+    private float dashingTime = 0.2f;
+    private float dashingCooldown = 1f;
+    */
 
     private void Awake()
     {
@@ -37,18 +59,55 @@ public class PlayerMovement : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            // Player collides with a wall
+            isCollidingWithWall = true;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            // Player exits the wall collision
+            isCollidingWithWall = false;
+        }
+    }
     private void Update()
     {
         horizontalInput = Input.GetAxis("Horizontal");
 
+        //if (isDashing) return;
+
+        if (!isCollidingWithWall && !canWallJump) 
+        {
+            float moveInput = Input.GetAxis("Horizontal");
+            body.velocity = new Vector2(moveInput * speed, body.velocity.y);
+        }
+        if (isCollidingWithWall && !canWallJump)
+        {
+            // Stop movement when colliding with a wall
+            body.velocity = Vector2.zero;
+        }
+
         //Flip player when moving left-right
         if (horizontalInput > 0.01f)
-            transform.localScale = new Vector3(3, 3, 3);
+        {
+            spriteRenderer.flipX = false; // No flipping
+            transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x), transform.localScale.y);
+        }
         else if (horizontalInput < -0.01f)
-            transform.localScale = new Vector3(-3, 3, 3);
-
+        {
+            spriteRenderer.flipX = true; // Flip horizontally
+            transform.localScale = new Vector2(-Mathf.Abs(transform.localScale.x), transform.localScale.y);
+            transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y); // Flip localScale.x
+        }
         //Set animator parameters
         anim.SetBool("walk", horizontalInput != 0);
         anim.SetBool("grounded", isGrounded());
@@ -61,7 +120,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space) && body.velocity.y > 0)
             body.velocity = new Vector2(body.velocity.x, body.velocity.y / 2);
 
-        if (onWall())
+        if (onWall() && canWallJump)
         {
             body.gravityScale = 0;
             body.velocity = Vector2.zero;
@@ -79,6 +138,26 @@ public class PlayerMovement : MonoBehaviour
             else
                 coyoteCounter -= Time.deltaTime; //Start decreasing coyote counter when not on the ground
         }
+
+        //if (Input.GetKeyDown(KeyCode.Q) && canDash) StartCoroutine(Dash());
+
+        if (Input.GetKeyDown(KeyCode.Q) && canDash && canDashEnable)
+        {
+            isDashing = true;
+            canDash = false;
+            tr.emitting = true;
+            dashingDir = new Vector2(horizontalInput,Input.GetAxis("Vertical"));
+            if (dashingDir == Vector2.zero) dashingDir = new Vector2(transform.localScale.x,0);
+            StartCoroutine(StopDash());
+        }
+
+        if (isDashing)
+        {
+            body.velocity = dashingDir.normalized * dashingVelocity;
+            return;
+        }
+
+        if (!isGrounded() && canDashEnable) canDash = true;
     }
 
     private void Jump()
@@ -88,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
 
         SoundManager.instance.PlaySound(jumpsound);
 
-        if (onWall())
+        if (onWall() && canWallJump)
         {
             WallJump();
         }
@@ -118,8 +197,21 @@ public class PlayerMovement : MonoBehaviour
 
     private void WallJump()
     {
-        body.AddForce(new Vector2(-Mathf.Sign(transform.localScale.x) * wallJumpX, wallJumpY));
+        //body.AddForce(new Vector2(-Mathf.Sign(transform.localScale.x) * wallJumpX, wallJumpY));
+        float direction = Mathf.Sign(transform.localScale.x);
+        //float direction = spriteRenderer.flipX? 1f : -1f;
+        body.AddForce(new Vector2(-direction * wallJumpX, wallJumpY));
         wallJumpCooldown = 0;
+    }
+
+    public void EnableWallJump()
+    {
+        canWallJump = true;
+    }
+
+    public void EnableDash()
+    {
+        canDashEnable = true;
     }
 
 
@@ -133,8 +225,29 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x, 0), 0.1f, wallLayer);
         return raycastHit.collider != null;
     }
-    public bool canAttack()
+
+    private IEnumerator StopDash()
     {
-        return horizontalInput == 0 && isGrounded() && !onWall();
+        yield return new WaitForSeconds(dashingTime);
+        tr.emitting = false;
+        isDashing = false;
     }
+    
+    /*
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+        float originalGravity = body.gravityScale;
+        body.gravityScale = 0f;
+        body.velocity = new Vector2(transform.localScale.x*dashingPower,0f);
+        //tr.emitting = true;
+        yield return new WaitForSeconds(dashingTime);
+        //tr.emitting = false;
+        body.gravityScale = originalGravity;
+        isDashing = false;
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
+    }
+    */
 }
