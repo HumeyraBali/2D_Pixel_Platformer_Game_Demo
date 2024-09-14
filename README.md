@@ -1,4 +1,5 @@
-# 2D_Pixel_Platformer_Game_Demo
+# Paws and Platforms
+## 2D_Pixel_Platformer_Game_Demo
 
 ## Table of Contents
 - [Overview](#overview)
