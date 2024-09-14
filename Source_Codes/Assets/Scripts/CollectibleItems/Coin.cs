@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Coin : MonoBehaviour
 {
     [SerializeField] private AudioClip coincollect;
     // Reference to the UI Text displaying the total number of coins
-    public UnityEngine.UI.Text coinText;
+    public TMP_Text[] coinText;
     public static int totalCoins = 0;
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -24,17 +25,11 @@ public class Coin : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
     void UpdateCoinUI()
     {
-        Text coinText = FindObjectOfType<Text>();
-        if (coinText != null)
+        foreach (TMP_Text text in coinText)
         {
-            coinText.text = totalCoins.ToString();
-        }
-        else
-        {
-            Debug.LogError("Coin Text is not assigned!");
+            text.text = totalCoins.ToString();
         }
     }
 }

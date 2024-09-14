@@ -9,12 +9,12 @@ public class SkillGainWallJump : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // Get the PlayerMovement script from the player GameObject
-            PlayerMovement playerMovement = other.GetComponent<PlayerMovement>();
+            PlayerControl playerControl = other.GetComponent<PlayerControl>();
             
             // Grant the double jump skill if the player movement script is found
-            if (playerMovement != null)
+            if (playerControl != null)
             {
-                playerMovement.EnableWallJump();
+                playerControl.EnableWallJump();
                 
                 // destroy the item after the player collects it
                 Destroy(gameObject);

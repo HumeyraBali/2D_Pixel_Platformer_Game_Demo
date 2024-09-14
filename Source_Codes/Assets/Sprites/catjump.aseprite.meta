@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cee33b2e4ac317048941f8c6f8f2a827
+guid: 2915199a0300b094ca3c6332fad3a588
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,16 +123,16 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: catjump_Frame_0
     originalName: 
-    pivot: {x: 0.58536583, y: -0.34210527}
+    pivot: {x: 0.60465115, y: -0.3783784}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 51
-      width: 41
-      height: 38
-    spriteID: f4ef99d2ea276d5468b94bc1cc2704c0
+      y: 49
+      width: 43
+      height: 37
+    spriteID: e21f55a437274204b87fc5161e46188b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -140,19 +140,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 51}
+    uvTransform: {x: 4, y: 49}
   - name: catjump_Frame_1
     originalName: 
-    pivot: {x: 0.58536583, y: -0.35897437}
+    pivot: {x: 0.6136364, y: -0.3783784}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 41
-      height: 39
-    spriteID: e99129c6dc1da22449e39355c772cc76
+      width: 44
+      height: 37
+    spriteID: fb648632b19bd2b4c809ab062cf5c392
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -173,19 +173,19 @@ ScriptedImporter:
     - name: catjump_Frame_0
       frameIndex: 0
       cellRect:
-        x: 8
-        y: 13
-        width: 41
-        height: 38
-      spriteId: f4ef99d2ea276d5468b94bc1cc2704c0
+        x: 6
+        y: 14
+        width: 43
+        height: 37
+      spriteId: e21f55a437274204b87fc5161e46188b
     - name: catjump_Frame_1
       frameIndex: 1
       cellRect:
-        x: 8
+        x: 5
         y: 14
-        width: 41
-        height: 39
-      spriteId: e99129c6dc1da22449e39355c772cc76
+        width: 44
+        height: 37
+      spriteId: fb648632b19bd2b4c809ab062cf5c392
     linkedCells: []
     parentIndex: -1
   platformSettings: []

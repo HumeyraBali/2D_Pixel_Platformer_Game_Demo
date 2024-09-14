@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 76347921bddd59945bb122e18d8a162c
+guid: e2be87b2fdc1310449897bee701b5203
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -132,7 +132,7 @@ ScriptedImporter:
       y: 4
       width: 41
       height: 40
-    spriteID: 490ab034f3d83594b96ada68d7ffa30a
+    spriteID: 7be25f3f422e8f542a0e07fc8a078edd
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -143,16 +143,16 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: catwalk_Frame_1
     originalName: 
-    pivot: {x: 0.58536583, y: -0.34210527}
+    pivot: {x: 0.5714286, y: -0.35135135}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 53
       y: 4
-      width: 41
-      height: 38
-    spriteID: f7b3d216e74a0e64e903101355058c93
+      width: 42
+      height: 37
+    spriteID: 823e9631fa8f47748b35423f190e1fe6
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -172,7 +172,7 @@ ScriptedImporter:
       y: 52
       width: 41
       height: 40
-    spriteID: d08f417ddad3710479428c9306277ac6
+    spriteID: 61cd930839379af4baf1c5978765cdb9
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -183,16 +183,16 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 52}
   - name: catwalk_Frame_3
     originalName: 
-    pivot: {x: 0.58536583, y: -0.34210527}
+    pivot: {x: 0.5714286, y: -0.35135135}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 53
-      y: 50
-      width: 41
-      height: 38
-    spriteID: 6cfd5f2542e35bc48905335910487845
+      y: 49
+      width: 42
+      height: 37
+    spriteID: 16730917165f381469deab1826181a14
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -200,7 +200,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 53, y: 50}
+    uvTransform: {x: 53, y: 49}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -217,15 +217,15 @@ ScriptedImporter:
         y: 13
         width: 41
         height: 40
-      spriteId: 490ab034f3d83594b96ada68d7ffa30a
+      spriteId: 7be25f3f422e8f542a0e07fc8a078edd
     - name: catwalk_Frame_1
       frameIndex: 1
       cellRect:
         x: 8
         y: 13
-        width: 41
-        height: 38
-      spriteId: f7b3d216e74a0e64e903101355058c93
+        width: 42
+        height: 37
+      spriteId: 823e9631fa8f47748b35423f190e1fe6
     - name: catwalk_Frame_2
       frameIndex: 2
       cellRect:
@@ -233,15 +233,15 @@ ScriptedImporter:
         y: 13
         width: 41
         height: 40
-      spriteId: d08f417ddad3710479428c9306277ac6
+      spriteId: 61cd930839379af4baf1c5978765cdb9
     - name: catwalk_Frame_3
       frameIndex: 3
       cellRect:
         x: 8
         y: 13
-        width: 41
-        height: 38
-      spriteId: 6cfd5f2542e35bc48905335910487845
+        width: 42
+        height: 37
+      spriteId: 16730917165f381469deab1826181a14
     linkedCells: []
     parentIndex: -1
   platformSettings: []

@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using UnityEditor.Callbacks;
+//using UnityEditor.Callbacks;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -43,15 +43,6 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public bool canWallJump = false;
     private bool isCollidingWithWall = false;
-
-    /*
-    //Dash
-    private bool canDash = true;
-    private bool isDashing;
-    private float dashingPower = 48f;
-    private float dashingTime = 0.2f;
-    private float dashingCooldown = 1f;
-    */
 
     private void Awake()
     {

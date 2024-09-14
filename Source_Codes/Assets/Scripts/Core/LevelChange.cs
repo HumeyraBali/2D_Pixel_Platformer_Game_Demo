@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class LevelChange : MonoBehaviour
 {
     [SerializeField] private AudioClip levelSound;
-    private PlayerMovement playerMovement;
 
    private void OnTriggerEnter2D(Collider2D collision) 
    {

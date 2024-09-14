@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3043df29eef4f664dab174ac72e31b69
+guid: 66a779c903ed1b54c8e1c3e04c8ad137
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -132,7 +132,7 @@ ScriptedImporter:
       y: 4
       width: 41
       height: 40
-    spriteID: 2d6f088a2595f594eb3f12481a5fbab9
+    spriteID: e6cd61cb84af33349a63df12f1cdfffc
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -143,16 +143,16 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: catidle_Frame_1
     originalName: 
-    pivot: {x: 0.58536583, y: -0.34210527}
+    pivot: {x: 0.5714286, y: -0.35135135}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 52
-      width: 41
-      height: 38
-    spriteID: 057d4e268dbcf5a44839f8f09fea3513
+      width: 42
+      height: 37
+    spriteID: cb4e5ffad6c3ca74f9e6e8dd96d5c4c6
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -177,15 +177,15 @@ ScriptedImporter:
         y: 13
         width: 41
         height: 40
-      spriteId: 2d6f088a2595f594eb3f12481a5fbab9
+      spriteId: e6cd61cb84af33349a63df12f1cdfffc
     - name: catidle_Frame_1
       frameIndex: 1
       cellRect:
         x: 8
         y: 13
-        width: 41
-        height: 38
-      spriteId: 057d4e268dbcf5a44839f8f09fea3513
+        width: 42
+        height: 37
+      spriteId: cb4e5ffad6c3ca74f9e6e8dd96d5c4c6
     linkedCells: []
     parentIndex: -1
   platformSettings: []

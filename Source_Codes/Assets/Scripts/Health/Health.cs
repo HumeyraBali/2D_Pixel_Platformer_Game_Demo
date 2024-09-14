@@ -64,11 +64,11 @@ public class Health : MonoBehaviour
                 
                 Debug.Log("Game Over");
 
-                GetComponent<PlayerMovement>().enabled = false;
+                GetComponent<PlayerControl>().enabled = false;
                 //deactivate all attached component classes
                 //foreach (Behaviour component in components)
                     //component.enabled = false;
-                anim.SetBool("grounded",true);
+                //anim.SetBool("grounded",true);
                 anim.SetTrigger("die");
                 dead = true;
                 SoundManager.instance.PlaySound(deathsound);
@@ -88,10 +88,10 @@ public class Health : MonoBehaviour
         dead = false;
         AddHealth(startingHealth);
         anim.ResetTrigger("die");
-        anim.Play("idle");
+        anim.Play("Idle");
         //StartCoroutine(Invunerability());
 
-        GetComponent<PlayerMovement>().enabled = true;
+        GetComponent<PlayerControl>().enabled = true;
 
         //foreach (Behaviour component in components)
             //component.enabled = true;

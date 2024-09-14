@@ -26,15 +26,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 49b4fd30d7376a6479c6603c738c2e8c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.1
+      value: 27.52
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 49b4fd30d7376a6479c6603c738c2e8c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.06
+      value: -0.61298114
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 49b4fd30d7376a6479c6603c738c2e8c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.044539515
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 49b4fd30d7376a6479c6603c738c2e8c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -141,7 +141,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coincollect: {fileID: 8300000, guid: 79180f511d89441b9aa23ccae1992fe0, type: 3}
-  coinText: {fileID: 0}
+  coinText:
+  - {fileID: 0}
 --- !u!50 &3217911990012733525
 Rigidbody2D:
   serializedVersion: 4
