@@ -22,12 +22,12 @@ This is a 2D pixel platformer game demo created to learn basic platformer mechan
 
 ## How to Play
 
-To play the game, download the CatPlatformerGameV1.2 folder and open CatPlatformerGame (with the cat icon). Windows defender may cause problems, you can press run it anyway.
+[Play the game on Unity Play](https://play.unity.com/en/games/362b8ff6-2220-4905-ab0e-ef7fe33bcab3/paws-and-platforms)
 
 - Movement: Use the arrow keys or A and D to move left and right.
-- Jump: Press the Space key to jump. Press again while in the air to double jump.
-- Wall Jump: (If the skill is gained) Jump towards a wall and press the jump key again to jump off the wall.
-- Dash: (If the skill is gained) Press the Q key to dash forward.
+- Jump: Press the Space key to jump. 
+- Wall Jump: (If the skill is gained) Jump towards a wall and press left shift + direction you look arrow + up/down arrow
+- Dash: (If the skill is gained) Press the left ctrl key to dash forward.
 - Collect Coins: Collect them and increase your score.
 - Collect Hearts: Collect them and increase your health..
 - Checkpoints: Reach checkpoints to save your progress. You will respawn at the last checkpoint if you die. Except falling down.
@@ -73,6 +73,11 @@ To play the game, download the CatPlatformerGameV1.2 folder and open CatPlatform
 - **New Content**:
   - **Level 2**: A new level with creative design and challenges.
   - **Level Transition**: Transition between levels when the player reaches the last checkpoint in the level.
+
+ ### Version 1.3
+- New and better player mechanics and animations
+- Improved wall jump and dash
+- Web browser play support
 
 ## Credits
 
