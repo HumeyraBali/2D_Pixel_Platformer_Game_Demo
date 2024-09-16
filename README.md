@@ -77,7 +77,7 @@ This is a 2D pixel platformer game demo created to learn basic platformer mechan
   - **Level Transition**: Transition between levels when the player reaches the last checkpoint in the level.
 
  ### Version 1.3
-- New and better player mechanics and animations
+- New and better player mechanics and animations (Double Jump and Coyote Time have been cancelled )
 - Improved wall jump and dash
 - Web browser play support
 
